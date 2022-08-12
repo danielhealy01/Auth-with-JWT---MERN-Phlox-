@@ -1,0 +1,37 @@
+/* istok-web-700 - latin */
+@font-face {
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+    url('./Assets/istok-web-v20-latin-700.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('./Assets/istok-web-v20-latin-700.woff') format('woff'),
+    /* Modern Browsers */
+    url('./Assets/istok-web-v20-latin-700.ttf') format('truetype');
+    /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''), 
+    url('./Assets/istok-web-v20-latin-regular.woff2') format('woff2'),
+    url('./Assets/istok-web-v20-latin-regular.woff') format('woff'),
+    url('./Assets/istok-web-v20-latin-regular.ttf') format('truetype');
+}
+
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #020F25;
+  color: white;
+}
+
