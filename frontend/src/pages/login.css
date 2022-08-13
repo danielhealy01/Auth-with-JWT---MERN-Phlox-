@@ -150,6 +150,7 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: solid #777 1px;
 }
 
 .btn svg {

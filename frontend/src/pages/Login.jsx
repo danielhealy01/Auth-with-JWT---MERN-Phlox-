@@ -1,25 +1,67 @@
 import './login.css'
 import Navbar from '../components/Navbar'
+import { useState } from 'react'
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { login } from "../features/authSlice";
 
 function Login() {
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
+
+    const { email, password } = formData;
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const onChange = (e) => {
+    setFormData((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+    }));
+    };
+
+    const onSubmit = (e) => {
+      e.preventDefault();
+
+      const userData = {
+        email,
+        password,
+      };
+
+      dispatch(login(userData))
+        .unwrap()
+        .then((user) => {
+          // NOTE: by unwrapping the AsyncThunkAction we can navigate the user after
+          // getting a good response from our API or catch the AsyncThunkAction
+          // rejection to show an error message
+          toast.success(`Logged in as ${user.name}`);
+          navigate("/");
+        })
+        .catch(toast.error);
+    };
+
   return (
-      <>
-          <Navbar />
+    <>
+      <Navbar />
       <section className="heading">
-        <h1>
-         Login
-        </h1>
+        <h1>Login</h1>
         <p>Please log in to get support</p>
       </section>
 
       <section className="form">
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
               type="email"
               className="form-control"
               id="email"
               name="email"
+              value={email}
+              onChange={onChange}
               placeholder="Enter your email"
               required
             />
@@ -30,6 +72,8 @@ function Login() {
               className="form-control"
               id="password"
               name="password"
+              value={password}
+              onChange={onChange}
               placeholder="Enter password"
               required
             />
