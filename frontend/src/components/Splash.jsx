@@ -25,7 +25,6 @@ export default function Splash() {
             </div>
           </div>
         </div>
-        <div className="hi">hi</div>
       </>
     );
 }

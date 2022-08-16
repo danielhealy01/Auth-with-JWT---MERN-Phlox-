@@ -96,6 +96,7 @@
 .buttonContainerExt {
     display: inline-block;
     margin: 1.7rem 7.25rem 0 0;
+    position: relative;
 }
 
 .buttonContainerInt {
@@ -103,6 +104,10 @@
     justify-content: space-between;
     align-items: center;
     width: auto;
+                -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
 }
 
 .user {
@@ -111,6 +116,31 @@
 
 .user::first-letter {
     text-transform: uppercase;
+}
+
+.logoutShow {
+    display: inline-block;
+    position: absolute;
+    top: 1.75rem;
+    cursor: pointer;
+    
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+}
+
+.logoutHidden {
+    display: inline-block;
+    position: absolute;
+    top: 1.75rem;
+    display: none;
+
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
 }
 
 .loginButton {

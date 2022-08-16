@@ -5,10 +5,36 @@ import { Link } from "react-router-dom";
 import "./navbarLoggedIn.css";
 import { useSelector } from "react-redux";
 import { FaAngleDown } from "react-icons/fa"
+import { useState } from "react"
+import { useDispatch } from "react-redux";
+import { logout } from "../features/authSlice";
 
 
 export default function NavbarLoggedIn() {
-    const { user } = useSelector((state) => state.auth);
+  
+  const { user } = useSelector((state) => state.auth);
+  
+  const [isHidden, setIsHidden] = useState(true)
+  if (isHidden === true) {
+
+  }
+  else {
+
+  }
+
+  const handleClick = (e) => {
+    console.log('clicked')
+    setIsHidden(current => !current)
+    console.log(isHidden)
+  }
+
+  const dispatch = useDispatch();
+
+  const handleLogout = (e) => {
+    console.log('logout')
+    dispatch(logout());
+  }
+
   return (
     <div className="navContainer">
       <div className="logoContainerExt">
@@ -32,12 +58,12 @@ export default function NavbarLoggedIn() {
       </div>
       <div className="buttonContainerExt">
         <div className="buttonContainerInt">
-          <p className="user">
-            Welcome,{" "}
-           
+          <p className="user" onClick={handleClick}>
               {user.name}
               <FaAngleDown />
-           
+          </p>
+          <p className={isHidden ? "logoutHidden" : "logoutShow"}
+             onClick={handleLogout}>Logout
           </p>
         </div>
       </div>
